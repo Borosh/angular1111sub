@@ -20,5 +20,6 @@ export class ButtonComponent {
 
   clicked() {
     this.onClick.emit();
+    console.log('test');
   }
 }
