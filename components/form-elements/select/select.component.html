@@ -1,0 +1,19 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <mat-select
+        #select
+        [value]="value"
+        [disabled]="disabled"
+        [required]="required"
+        [errorStateMatcher]="matcher"
+        (selectionChange)="selectionChanged($event)"
+    >
+        <mat-option
+            *ngFor="let option of options"
+            [value]="option.value"
+        >
+            {{option.viewValue}}
+        </mat-option>
+    </mat-select>
+    <mat-error>{{errorMessage}}</mat-error>
+</mat-form-field>
