@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
-import { PersonService } from '@person/services/person.service';
-import { of } from 'rxjs';
-import { catchError, first, map, switchMap, tap } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Store } from "@ngrx/store";
+import { PersonService } from "@person/services/person.service";
+import { of } from "rxjs";
+import { catchError, first, map, switchMap, tap } from "rxjs/operators";
 import {
   getPersonById,
   getPersonByIdFailed,
@@ -14,11 +14,11 @@ import {
   getPersonsByPageFailed,
   getPersonsByPageSuccess,
   setTotalNumberOfPersons,
-} from '../actions/person.actions';
+} from "../actions/person.actions";
 import {
   selectCurrentPage,
   selectEntitiesByPage,
-} from '../selectors/person.selector';
+} from "../selectors/person.selector";
 
 @Injectable()
 export class PersonEffects {
@@ -46,7 +46,7 @@ export class PersonEffects {
                     getPersonsByPageSuccess({ persons, page }),
                     setTotalNumberOfPersons({ totalNumberOfPersons }),
                   ]),
-                  catchError((error) => of(getPersonsByPageFailed(error)))
+                  catchError((error) => of(getPersonsByPageFailed({ error })))
                 )
           )
         )
